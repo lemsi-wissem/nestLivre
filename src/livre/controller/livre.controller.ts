@@ -12,7 +12,7 @@ import {
 import { LivreService } from '../service/livre.service';
 import { Livre } from '../model/livre.entity';
 import { LivreDto } from '../dto/livre.dto';
-import { ApiBody, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('livre')
 @ApiTags('Livre')
@@ -21,6 +21,7 @@ export class LivreController {
 
   @Post()
   @UsePipes(new ValidationPipe())
+  @ApiBearerAuth()
   @ApiResponse({
     status: 201,
     description: 'The record has been successfully created.',
