@@ -27,4 +27,9 @@ export class AuthController {
   getProfile(@Request() req) {
     return req.user;
   }
+
+  @Get('validate')
+  validate(@Request() req) {
+    return this.authService.validateToken(req.headers.authorization);
+  }
 }
